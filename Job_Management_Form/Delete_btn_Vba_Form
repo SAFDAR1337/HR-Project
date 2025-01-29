@@ -1,0 +1,278 @@
+Private Sub DELETE_BUTTON_Click()
+    Dim lastrow As Long
+    Dim SearchCell As String
+    Dim Found_Row As Long
+    Dim SearchCell_Status As String
+    Dim sheetName As String
+    Dim response As VbMsgBoxResult ' Variable For MsgBox Prompt
+    Dim n As Long
+    SearchCell_Status = Me.ComboBox2.Value 'changing cheet according it
+    SearchCell = Me.ComboBox1.Value        'Checking value - job title checking ,If match so it store row num into Row-Found
+    lastrow = Sheets("MASTER_DB").Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+    For n = 2 To lastrow
+        If Sheets("MASTER_DB").Cells(n, "A") = SearchCell Then
+            Found_Row = Sheets("MASTER_DB").Cells(n, "A").Row
+
+            'Deleting Record Founded Row
+            ' Check If RowNum is valid
+            If Found_Row > 0 Then
+                Sheets("MASTER_DB").Rows(Found_Row).Delete Shift:=xlUp
+            Else
+            End If
+            '#######
+            'Sheets("MASTER_DB").Cells(Found_Row, "A").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "B").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "C").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "D").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "E").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "F").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "G").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "H").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "I").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "J").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "K").Clear
+            'Sheets("MASTER_DB").Cells(Found_Row, "L").Clear
+            '######
+        Else
+        End If
+
+    Next n
+
+
+    If SearchCell_Status = "OPENING SOON" Then 'If status cell value is opening soon Then this whole code,will execute
+
+        sheetName = "OPENING-SOON"
+
+        lastrow = Sheets(sheetName).Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+        For i = 2 To lastrow
+            If Sheets(sheetName).Cells(i, "A") = SearchCell Then
+                Found_Row = Sheets(sheetName).Cells(i, "A").Row
+
+                ' Show confirmation message box
+                response = MsgBox("Are you sure you want To delete this record?", vbYesNo + vbQuestion, "Confirm Delete")
+
+                ' Check user response
+                If response = vbYes Then
+                    ' User clicked Yes, proceed With deleting the record
+                    MsgBox "Record deleted successfully.", vbInformation, "Success"
+
+                    'Deleting Record Founded Row
+                    ' Check If RowNum is valid
+                    If Found_Row > 0 Then
+                        Sheets(sheetName).Rows(Found_Row).Delete Shift:=xlUp
+                    Else
+                    End If
+
+                    'Sheets(sheetName).Cells(Found_Row, "A").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "B").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "C").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "D").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "E").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "F").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "G").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "H").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "I").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "J").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "K").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "L").Clear
+
+                Else
+                    ' User clicked No, Exit the Function
+                    MsgBox "Operation cancelled.", vbExclamation, "Cancelled"
+                 Exit Sub
+
+
+                End If
+
+            Else
+
+            End If
+        Next i
+
+
+    Else
+    End If
+
+
+    If SearchCell_Status = "OPEN" Then 'If status cell value is opening soon Then this whole code,will execute
+
+        sheetName = "OPEN-JOBS"
+
+        lastrow = Sheets(sheetName).Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+        For i = 2 To lastrow
+            If Sheets(sheetName).Cells(i, "A") = SearchCell Then
+                Found_Row = Sheets(sheetName).Cells(i, "A").Row
+
+                ' Show confirmation message box
+                response = MsgBox("Are you sure you want To delete this record?", vbYesNo + vbQuestion, "Confirm Delete")
+
+                ' Check user response
+                If response = vbYes Then
+                    ' User clicked Yes, proceed With deleting the record
+                    MsgBox "Record deleted successfully.", vbInformation, "Success"
+
+                    'Deleting Record Founded Row
+                    ' Check If RowNum is valid
+                    If Found_Row > 0 Then
+                         Sheets(sheetName).Rows(Found_Row).Delete Shift:=xlUp
+                    Else
+                    End If
+
+                    'Sheets(sheetName).Cells(Found_Row, "A").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "B").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "C").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "D").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "E").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "F").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "G").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "H").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "I").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "J").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "K").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "L").Clear
+                Else
+                    ' User clicked No, Exit the Function
+                    MsgBox "Operation cancelled.", vbExclamation, "Cancelled"
+                 Exit Sub
+                End If
+            Else
+
+            End If
+        Next i
+
+
+    Else
+    End If
+
+
+    If SearchCell_Status = "CLOSED-FILLED" Then 'If status cell value is opening soon Then this whole code,will execute
+
+        sheetName = "CLOSED-FILLED"
+
+        lastrow = Sheets(sheetName).Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+        For i = 2 To lastrow
+            If Sheets(sheetName).Cells(i, "A") = SearchCell Then
+                Found_Row = Sheets(sheetName).Cells(i, "A").Row
+
+                ' Show confirmation message box
+                response = MsgBox("Are you sure you want To delete this record?", vbYesNo + vbQuestion, "Confirm Delete")
+
+                ' Check user response
+                If response = vbYes Then
+                    ' User clicked Yes, proceed With deleting the record
+                    MsgBox "Record deleted successfully.", vbInformation, "Success"
+
+                    'Deleting Record Founded Row
+                    ' Check If RowNum is valid
+                    If Found_Row > 0 Then
+                         Sheets(sheetName).Rows(Found_Row).Delete Shift:=xlUp
+                    Else
+                    End If
+
+                    'Sheets(sheetName).Cells(Found_Row, "A").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "B").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "C").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "D").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "E").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "F").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "G").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "H").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "I").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "J").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "K").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "L").Clear
+
+                Else
+                    ' User clicked No, Exit the Function
+                    MsgBox "Operation cancelled.", vbExclamation, "Cancelled"
+                 Exit Sub
+                End If
+            Else
+
+            End If
+        Next i
+
+
+    Else
+    End If
+
+    If SearchCell_Status = "CLOSED-Not-FILLED" Then 'If status cell value is opening soon Then this whole code,will execute
+
+        sheetName = "PENDINGS"
+
+        lastrow = Sheets(sheetName).Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+        For i = 2 To lastrow
+            If Sheets(sheetName).Cells(i, "A") = SearchCell Then
+                Found_Row = Sheets(sheetName).Cells(i, "A").Row
+
+                ' Show confirmation message box
+                response = MsgBox("Are you sure you want To delete this record?", vbYesNo + vbQuestion, "Confirm Delete")
+
+                ' Check user response
+                If response = vbYes Then
+                    ' User clicked Yes, proceed With deleting the record
+                    MsgBox "Record deleted successfully.", vbInformation, "Success"
+
+                    'Deleting Record Founded Row
+                    ' Check If RowNum is valid
+                    If Found_Row > 0 Then
+                         Sheets(sheetName).Rows(Found_Row).Delete Shift:=xlUp
+                    Else
+                    End If
+
+                    'Sheets(sheetName).Cells(Found_Row, "A").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "B").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "C").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "D").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "E").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "F").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "G").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "H").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "I").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "J").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "K").Clear
+                    'Sheets(sheetName).Cells(Found_Row, "L").Clear
+
+                Else
+                    ' User clicked No, Exit the Function
+                    MsgBox "Operation cancelled.", vbExclamation, "Cancelled"
+                 Exit Sub
+                End If
+            Else
+
+            End If
+        Next i
+
+
+    Else
+    End If
+
+    'End Code
+
+    'Clear All Controls
+    Dim ctrl As Control
+
+    For Each ctrl In Me.Controls
+        Select Case TypeName(ctrl)
+         Case "TextBox"
+            ctrl.Value = ""
+
+         Case "OptionButton"
+            ctrl.Value = False
+
+         Case "CheckBox"
+            ctrl.Value = False
+
+         Case "ComboBox"
+            ctrl.Clear
+            ctrl.Text = ""
+
+        End Select
+    Next ctrl
+    Me.Image1.Picture = Nothing
+    Me.Label65.Caption = Filename
+
+
+
+
+End Sub
